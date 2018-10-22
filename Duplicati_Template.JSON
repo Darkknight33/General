@@ -1,0 +1,57 @@
+"Data": {
+	"Instance": {
+		"GUID": "xxxxxx-xxxxxx",
+		"Name": "string"
+	},
+	"Set": { 
+		"ID": "string", #Same as internal DB name for set
+		"Name": "string"
+	},
+	"Operation": {
+		"Type": "string", #('Backup','Restore','Verify','Compact','Repair')
+		"BeginTime": epoch,
+		"EndTime": epoch,
+		"Duration": millisecond,
+		"Success": Boolean,
+		"Dryrun": Boolean,
+		"LastRun": epoch, #Last time any operation was run
+		"LastRunSuccess": Boolean, #Was the last run above successful?
+		"NextRun": epoch, #Next scheduled operation
+	},
+	"Storage": {
+		"SourceSize": bytes,
+		"RemoteSize": bytes,
+		"TotalFiles": number,
+		"Provider": "string", #Where is the backup being stored
+		"QuotaSize": bytes,
+		"QuotaExceeded": Boolean
+		"RemoteCalls": number,
+		"SizeUp": bytes,
+		"SizeDown": bytes
+	},
+	"Backup": {
+		"FilesAdded": number,
+		"FilesDeleted": number,
+		"SizeAdded": bytes,
+		"SizeDeleted": bytes,
+		"VersionsStored": number,
+		"VersionsDeleted": number,
+		"LastVersion": epoch, #should be a timestamp of the last time the backup executed without warnings/errors — should match most recent restore date available
+		"PartialBackup": boolean
+	},
+	"Restore": {
+		"FilesRestored": number,
+		"FilesFailed": number,
+		"SizeRestored": bytes,
+		"SizeFailed": bytes
+	},
+	"Compact": {
+		"Change": number #Expressed as percentage diff i.e. 97 =97% 
+	},
+	"Database": {
+		"Size": bytes #Duplicati main DB size
+	},
+	"Messages": {
+		"Message": "string" #Delimited
+	}
+}
